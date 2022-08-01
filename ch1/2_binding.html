@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Binding Elements</title>
+    <style type="text/css">
+        ul {
+            background-color: #DCDCDC;
+            list-style: none;
+            margin: 0pt;
+            padding: 0pt;
+            width: 250px;
+        }
+
+        li {
+            cursor: pointer;
+            margin: 10px 0px;
+        }
+    </style>
+</head>
+
+<body>
+    <ul>
+        <li>India</li>
+        <li>USA</li>
+        <li>UK</li>
+        <li>France</li>
+    </ul>
+    <select name="" id="">
+        <option value="Africa">Africa</option>
+        <option value="Antarctica">Antarctica</option>
+        <option value="Asia">Asia</option>
+        <option value="Australia">Australia</option>
+        <option value="Europe">Europe</option>
+        <option value="North America">North America</option>
+        <option value="South America">South America</option>
+    </select>
+    <input type="button" value="Unbind Select Box">
+
+
+    <!-- Jquery Library File -->
+    <script src="../jquery/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Your jQuery code here
+            $('input:text').bind({
+                focus: function(){
+                    this.val(' ');
+                },
+                blur: function(){
+                    $(this).val('Enter some text');
+                }
+            });
+
+            $('li').bind('click', function(){
+                $(this).css('background-color', 'red');
+            });
+
+            $('select').bind('change', function(){
+                alert('You selected: ' + $(this).val());
+            });
+
+            $('input:button').bind('click', function(){
+                $('select').unbind('change');
+                $('li').unbind('click');
+            });
+        })
+    </script>
+
+    <!-- 
+    jQuery uses the .bind() method to attach standard JavaScript events to elements.
+    .bind() takes two parameters. 
+        1. The first parameter is the event type to attach. It is passed in string format, and event types such as click, change, keyup, keydown, focus, blur, and so on can be passed to it. 
+        2. The second parameter is the callback function, which will be executed when the event fires.
+    -->
+</body>
+
+</html>

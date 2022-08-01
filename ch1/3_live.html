@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attaching events elements </title>
+    <style type="text/css">
+        div {
+            border: 1px solid black;
+            cursor: pointer;
+            width: 200px;
+            margin: 10px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <input type="button" value="Create New Element" id="button">
+    <div class="future">Already on page</div>
+
+    <!-- Jquery Library File -->
+    <!-- <script src="../jquery/jquery-3.6.0.min.js"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            // Your jQuery code here
+
+            $('#button').click(function () {
+                $('body').append('<div class="future">I am a new div</div > ');
+            });
+            $('div').live('click', function () {
+                $(this).css({
+                    'color': 'red',
+                    'font-weight': 'bold'
+                }).html('You clicked me');
+            });
+            // $('div').die();
+            // $('div').die('click');
+        });
+    </script>
+
+
+    <!-- The live() method was deprecated in jQuery version 1.7, and removed in version 1.9. Use the on() method instead.
+
+    The live() method attaches one or more event handlers for selected elements, and specifies a function to run when the events occur.
+
+    Event handlers attached using the live() method will work for both current and FUTURE elements matching the selector (like a new element created by a script). -->
+
+    <!-- The die() method is similar to the unbind() method. It is used to remove event handlers that were attached using the live() method. Similar to unbind(), die() also has two variations. -->
+
+
+</body>
+
+</html>

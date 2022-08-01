@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jquery</title>
+</head>
+
+<body>
+    <form id="myForm">
+        <input type="button" value="Submit Form" />
+    </form>
+
+    <!-- Jquery Library File -->
+    <script src="../jquery/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Your jQuery code here
+            $('input:button').click(function(){
+                // $('#myForm').submit();
+
+                // If false is returned by the handler function, the form will not be submitted.
+                $('#myForm').submit(function(){
+                    // The code for validating form values can be placed here
+                    return false;
+                    // If values are validated, true can be returned, which will submit the form
+                });
+
+                // $('#myForm').submit(function(event){
+                //     event.preventDefault();
+                // });
+            });
+        })
+    </script>
+</body>
+
+</html>
