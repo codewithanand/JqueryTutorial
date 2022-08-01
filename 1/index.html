@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jquery Tutorial</title>
+</head>
+<body>
+    <h1>Hello World!</h1>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea maiores doloremque, distinctio, quidem iure totam ullam ex quas quaerat officia placeat, sed dolorem earum explicabo molestias laborum ab aliquam? Quaerat.</p>
+
+    <p class="myPara">Paragraph 1</p>
+    <p class="myPara">Paragraph 2</p>
+    <p class="myPara">Paragraph 3</p>
+    <p class="myPara">Paragraph 4</p>
+
+    <!-- Jquery Library File -->
+    <script src="../jquery/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            // Your jQuery code here
+            console.log("We are using jQuery");
+    
+            // $('selector').action()
+            $('p').click(function(){
+                // Do this when click on p
+                console.log("You clicked on p");
+            }); // click on p
+    
+            // $('p').click(function(){
+            //     $('p').hide();
+            // });
+    
+            $('.myPara').click(function(){
+                $(this).hide();
+            });
+        })
+    </script>
+</body>
+</html>
