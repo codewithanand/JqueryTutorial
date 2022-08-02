@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dragging</title>
+    <style type="text/css">
+        .dragMe {
+            background-color: #8FBC8F;
+            border: 1px solid black;
+            color: #fff;
+            float: left;
+            font-family: verdana, arial;
+            font-size: 14px;
+            font-weight: bold;
+            height: 100px;
+            margin: 10px;
+            text-align: center;
+            width: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="dragMe">Drag Me</div>
+    <div class="dragMe">Drag Me too</div>
+
+    <!-- Jquery Library File -->
+    <script src="../jquery/jquery-3.6.0.min.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script> -->
+    <script>
+        $(document).ready(function () {
+            var mouseX = mouseY = 0;
+            var divLeft, divTop;
+            $('.dragMe').mousedown(function(e){
+                var offset = $(this).offset();
+                divLeft = parseInt(offset.left, 10);
+                divTop = parseInt(offset.top, 10);
+                mouseX = e.pageX;
+                mouseY = e.pageY;
+                $(this).bind('mousemove', dragElement);
+            });
+
+            function dragElement(){
+                var left = divLeft + (event.pageX - mouseX);
+                var top = divTop + (event.pageY - mouseY);
+                $(this).css(
+                    {
+                        'top': top + 'px',
+                        'left': left + 'px',
+                        'position': 'absolute'
+                    }
+                );
+                return false;
+            }
+            
+            $(document).mouseup(function(){
+                $('.dragMe').unbind('mousemove');
+            })
+        })
+    </script>
+</body>
+
+</html>

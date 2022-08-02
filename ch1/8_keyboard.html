@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keyboard Shortcuts</title>
+    <style type="text/css">
+        div {
+            border: 1px solid black;
+            float: left;
+            height: 200px;
+            margin: 10px;
+            width: 220px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>You can toggle this dov using Alt+S</div>
+    <div>You can toggle this div using Alt+G</div>
+    <p style="clear: both;">&nbsp;</p>
+    <p>Press Alt+B to toggle both divs</p>
+    <p>Event: <strong><span id="status"></span></strong></p>
+
+    <!-- Jquery Library File -->
+    <script src="../jquery/jquery-3.6.0.min.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script> -->
+    <script>
+        $(document).ready(function () {
+            // remember that this is a global variable
+            var altPressed = false;
+            $(document).keydown(function(event){
+                if(event.which == 18) // ASCII code for ALT
+                    altPressed = true;
+                if(altPressed){
+                    switch(event.which){
+                        case 83: // ASCII code for S
+                            $('div:first').slideToggle('slow');
+                            return false;
+                            break;
+                        case 71: // ASCII code for G
+                            $('div:last').slideToggle('slow');
+                            return false;
+                            break;
+                        case 66: // ASCII code for B
+                            $('div').slideToggle('slow');
+                            return false;
+                            break;
+                    }
+                }
+                $('#status').html(event.which);
+            });
+
+            // Note the return of false in each case of switch statement. Returning false is necessary to override a browser's default behavior. If false is not returned, pressing the Alt key will activate the browser's menu.
+
+            $(document).keyup(function(event){
+                if(event.which == 18) // ASCII code for ALT
+                    altPressed = false;
+                $('#status').html(event.which);
+            });
+
+            // A list of key codes can be found at http://goo.gl/v2Fk
+
+        })
+    </script>
+</body>
+
+</html>
